@@ -40,9 +40,14 @@ const batch = [
 
 // Add my functions below:
 
+const cloneArray = (array) => {
+  let cloneArray = array.slice(0); // copy the whole `array`
+  return cloneArray;
+};
+
 const doubleEveryOtherNum = (array) => {
-  let doubled = array.slice(0); // copy the whole `array`
-  for (let i = 0; i < doubled.length; i += 2) {
+  let doubled = array.reverse(0); // reverse the whole `array`
+  for (let i = 1; i < doubled.length; i += 2) {
     doubled[i] *= 2; // replace the value at `i`, for every other number.
   }
   return doubled;
@@ -72,7 +77,8 @@ const isValid = (remainder) => {
 };
 
 const validateCred = (array) => {
-  const doubledNums = doubleEveryOtherNum(array);
+  const orgArray = cloneArray(array);
+  const doubledNums = doubleEveryOtherNum(orgArray);
   const subtractedNums = minus9Check(doubledNums);
   const sum = sumTotal(subtractedNums);
   const remainder = getModulo(sum);
@@ -80,5 +86,20 @@ const validateCred = (array) => {
   return isValid(remainder);
 };
 
-validateCred(valid1);
-validateCred(invalid1)
+const findInvalidCards = (arrayBatch) => {
+  let validCards = [];
+  let invalidCards = [];
+
+  for (const i of arrayBatch) {
+    if (validateCred(i)) {
+      validCards.push(i);
+    } else if (!validateCred(i)) {
+      invalidCards.push(i);
+    }
+  }
+  return console.log(invalidCards)
+};
+
+findInvalidCards(batch);
+
+
