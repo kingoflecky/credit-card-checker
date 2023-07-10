@@ -97,7 +97,7 @@ const findInvalidCards = (arrayBatch) => {
       invalidCards.push(i);
     }
   }
-  return console.log(invalidCards)
+  return invalidCards
 };
 
 findInvalidCards(batch);
