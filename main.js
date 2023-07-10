@@ -45,31 +45,40 @@ const doubleEveryOtherNum = (array) => {
   for (let i = 0; i < doubled.length; i += 2) {
     doubled[i] *= 2; // replace the value at `i`, for every other number.
   }
-  return console.log(doubled);
+  return doubled;
 };
 
-// const minus9Check = () => {
+const minus9Check = (doubledNums) => {
+  let sub9 = doubledNums.slice(); // copy the whole `array`
 
-//     return
-// }
+  for (let i = 0; i < sub9.length; i++) {
+    if (sub9[i] > 9) {
+      sub9[i] -= 9;
+    }
+  }
+  return sub9;
+};
 
-// const sumTotal = () => {
+const sumTotal = (subtractedNums) => {
+  return subtractedNums.reduce((a, b) => a + b, 0);
+};
 
-//     return
-// }
+const getModulo = (sum) => {
+  return sum % 10;
+};
 
-// const getModulo = () => {
-
-//     return
-// }
+const isValid = (remainder) => {
+  return remainder === 0;
+};
 
 const validateCred = (array) => {
-  let isValid = false;
+  const doubledNums = doubleEveryOtherNum(array);
+  const subtractedNums = minus9Check(doubledNums);
+  const sum = sumTotal(subtractedNums);
+  const remainder = getModulo(sum);
 
-  doubleEveryOtherNum(array);
-
-  return console.log(isValid);
+  return isValid(remainder);
 };
 
 validateCred(valid1);
-// validateCred(invalid1)
+validateCred(invalid1)
