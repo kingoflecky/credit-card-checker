@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <head>
+  <script src="main.js"></script>
   <link rel="stylesheet" type="text/css" href="index.css" />
   <title>Credit Card Validator</title>
 </head>
@@ -10,11 +11,11 @@
   <h2>Credit Card Validator</h2>
 
   <div class="content-wrapper">
-    <form class="form">
+    <form class="inputForm" onsubmit="submitFn()">
 
       <div class="inputGroups">
-      <label for='name'>Name: </label>
-      <input id='name' type="text" name="name" placeholder="Enter your name"></input>
+      <label for='fullName'>Full Name: </label>
+      <input id='fullName' type="text" name="fullName" placeholder="Enter your full name"></input>
       </div>
 
       <div class="inputGroups">

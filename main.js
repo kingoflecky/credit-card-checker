@@ -135,9 +135,32 @@ const idInvalidCardCompanies = (findInvalidCards) => {
   return companyNames.join(', ');
 };
 
-console.log("validator - expect true: " + validateCred(valid1));
-console.log("validator - expect false: " + validateCred(invalid1));
-console.log("invalid cards: " + findInvalidCards(batch));
+// Tests for the above
+    // console.log("validator - expect true: " + validateCred(valid1));
+    // console.log("validator - expect false: " + validateCred(invalid1));
+    // console.log("invalid cards: " + findInvalidCards(batch));
 
-console.log("card companies: " + idInvalidCardCompanies(findInvalidCards));
+    // console.log("card companies: " + idInvalidCardCompanies(findInvalidCards));
 
+
+
+
+
+
+// **WIP**
+    // const param = new URLSearchParams(window.location.search);
+
+
+    // const fullName = param.get('fullName');
+    // const bankName = param.get('bankName')
+    // const cardNum = param.get('cardNum')
+
+
+
+    // document.querySelector('inputForm').addEventListener('submit', function (e) {
+
+    //   //prevent the normal submission of the form
+    //   e.preventDefault();
+
+    //   console.log(fullName);    
+    // });
