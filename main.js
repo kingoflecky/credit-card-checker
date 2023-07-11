@@ -92,14 +92,52 @@ const findInvalidCards = (arrayBatch) => {
 
   for (const i of arrayBatch) {
     if (validateCred(i)) {
-      validCards.push(i);
+      validCards.push(JSON.stringify(i));
     } else if (!validateCred(i)) {
-      invalidCards.push(i);
+      invalidCards.push(JSON.stringify(i));
     }
   }
-  return invalidCards
+  return invalidCards;
 };
 
-findInvalidCards(batch);
+const idInvalidCardCompanies = (findInvalidCards) => {
+  let companyNames = [];
+  let firstNum = [];
+  let invalids = findInvalidCards(batch);
+  const arrayCopy = [...invalids];
 
+  arrayCopy.forEach(function(i) {
+  
+    if (!firstNum.includes(i[1])) {
+      firstNum.push(i[1]);
+    }
+  });
+
+  for (const i of firstNum) {
+    switch (i) {
+      case '3':
+        companyNames.push("Amex");
+        break;
+      case '4':
+        companyNames.push("Visa");
+        break;
+      case '5':
+        companyNames.push("Mastercard");
+        break;
+      case '6':
+        companyNames.push("Discover");
+        break;
+      default:
+        companyNames.push("Company not found");
+    }
+  }
+
+  return companyNames.join(', ');
+};
+
+console.log("validator - expect true: " + validateCred(valid1));
+console.log("validator - expect false: " + validateCred(invalid1));
+console.log("invalid cards: " + findInvalidCards(batch));
+
+console.log("card companies: " + idInvalidCardCompanies(findInvalidCards));
 
