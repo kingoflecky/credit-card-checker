@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="index.css" />
+  <title>Credit Card Validator</title>
+</head>
+
+<body>
+
+  <h2>Credit Card Validator</h2>
+
+  <div class="content-wrapper">
+    <form class="form">
+
+      <div class="inputGroups">
+      <label for='name'>Name: </label>
+      <input id='name' type="text" name="name" placeholder="Enter your name"></input>
+      </div>
+
+      <div class="inputGroups">
+      <label for='bankName'>Your Bank: </label>
+      <input id='bankName' type="text" name="bankName" placeholder="Enter the name of your bank"></input>
+      </div>
+
+      <div class="inputGroups">
+      <label for='cardNum'>Card Number: </label>
+      <input id='cardNum' type="number" name="cardNum"  minlength="15" maxlength="16" placeholder="Please enter your card number"></input>
+      </div>
+
+      
+      <input id="submitBtn" type="submit" value="Check Card" />
+
+
+    </form>
+
+
+  </div>
+
+</body>

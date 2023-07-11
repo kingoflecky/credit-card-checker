@@ -1,0 +1,32 @@
+.content-wrapper {
+  text-align: center;
+}
+
+.form {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-end;
+  
+}
+
+input {
+  height: 30px;
+  width: 40vw;
+  margin: 0.5rem;
+  
+}
+
+.inputGroups {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+#submitBtn {
+  height: 40px;
+  width: 100px;
+  
+  cursor: pointer;
+}
+
