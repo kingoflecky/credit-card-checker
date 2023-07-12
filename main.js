@@ -64,8 +64,11 @@ const minus9Check = (doubledNums) => {
   return sub9;
 };
 
-const sumTotal = (subtractedNums) => {
-  return subtractedNums.reduce((a, b) => a + b, 0);
+const sumTotal = (array) => {
+
+  const total = array.reduce(
+    (a, b) => a + Number(b), 0);
+  return total;
 };
 
 const getModulo = (sum) => {
@@ -80,8 +83,13 @@ const validateCred = (array) => {
   const orgArray = cloneArray(array);
   const doubledNums = doubleEveryOtherNum(orgArray);
   const subtractedNums = minus9Check(doubledNums);
+
   const sum = sumTotal(subtractedNums);
+
+  console.log('sum: ' + sum)
+
   const remainder = getModulo(sum);
+  console.log('remainder: ' + remainder)
 
   return isValid(remainder);
 };
@@ -141,15 +149,42 @@ const idInvalidCardCompanies = (findInvalidCards) => {
 
 // console.log("card companies: " + idInvalidCardCompanies(findInvalidCards));
 
-
-
-
 // submit form
+let userInputCardNum;
+
 const submitForm = (event) => {
   event.preventDefault();
-  const fName = document.getElementById("fullName");
-  const bankName = document.getElementById("bankName");
   const cardNum = document.getElementById("cardNum");
-  console.log(fName.value, bankName.value, cardNum.value);
-}
+  userInputCardNum = cardNum.value
+
+  return singleCardInputValidator(userInputCardNum);
+};
+
+
 // **WIP**
+
+
+const singleCardInputValidator = (userInputCardNum) => {
+  let singleInputArray = [];
+  
+  for (i of userInputCardNum) {
+    singleInputArray.push(i);
+  }
+  
+  console.log('updated singleInputArray: ' + singleInputArray);
+
+
+  const checkUserCard = validateCred(singleInputArray);
+  console.log('checkUserCard in func: ' + checkUserCard);
+  
+  if (checkUserCard) {
+    return alert("your card number is valid");
+  } else {
+    return alert("your card number is invalid");
+  }
+};
+
+
+
+// 4539677908016808
+// 8083108095739658 
