@@ -106,8 +106,7 @@ const idInvalidCardCompanies = (findInvalidCards) => {
   let invalids = findInvalidCards(batch);
   const arrayCopy = [...invalids];
 
-  arrayCopy.forEach(function(i) {
-  
+  arrayCopy.forEach(function (i) {
     if (!firstNum.includes(i[1])) {
       firstNum.push(i[1]);
     }
@@ -115,16 +114,16 @@ const idInvalidCardCompanies = (findInvalidCards) => {
 
   for (const i of firstNum) {
     switch (i) {
-      case '3':
+      case "3":
         companyNames.push("Amex");
         break;
-      case '4':
+      case "4":
         companyNames.push("Visa");
         break;
-      case '5':
+      case "5":
         companyNames.push("Mastercard");
         break;
-      case '6':
+      case "6":
         companyNames.push("Discover");
         break;
       default:
@@ -132,35 +131,25 @@ const idInvalidCardCompanies = (findInvalidCards) => {
     }
   }
 
-  return companyNames.join(', ');
+  return companyNames.join(", ");
 };
 
 // Tests for the above
-    // console.log("validator - expect true: " + validateCred(valid1));
-    // console.log("validator - expect false: " + validateCred(invalid1));
-    // console.log("invalid cards: " + findInvalidCards(batch));
+// console.log("validator - expect true: " + validateCred(valid1));
+// console.log("validator - expect false: " + validateCred(invalid1));
+// console.log("invalid cards: " + findInvalidCards(batch));
 
-    // console.log("card companies: " + idInvalidCardCompanies(findInvalidCards));
-
-
+// console.log("card companies: " + idInvalidCardCompanies(findInvalidCards));
 
 
 
 
+// submit form
+const submitForm = (event) => {
+  event.preventDefault();
+  const fName = document.getElementById("fullName");
+  const bankName = document.getElementById("bankName");
+  const cardNum = document.getElementById("cardNum");
+  console.log(fName.value, bankName.value, cardNum.value);
+}
 // **WIP**
-    // const param = new URLSearchParams(window.location.search);
-
-
-    // const fullName = param.get('fullName');
-    // const bankName = param.get('bankName')
-    // const cardNum = param.get('cardNum')
-
-
-
-    // document.querySelector('inputForm').addEventListener('submit', function (e) {
-
-    //   //prevent the normal submission of the form
-    //   e.preventDefault();
-
-    //   console.log(fullName);    
-    // });
