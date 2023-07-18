@@ -38,7 +38,7 @@ const batch = [
   mystery5,
 ];
 
-// Add my functions below:
+// Below functions set up validation algorithm 
 
 const cloneArray = (array) => {
   let cloneArray = array.slice(0); // copy the whole `array`
@@ -79,21 +79,18 @@ const isValid = (remainder) => {
   return remainder === 0;
 };
 
+// Function to call the above function. Returns True or False.
 const validateCred = (array) => {
   const orgArray = cloneArray(array);
   const doubledNums = doubleEveryOtherNum(orgArray);
   const subtractedNums = minus9Check(doubledNums);
-
   const sum = sumTotal(subtractedNums);
-
-  console.log('sum: ' + sum)
-
   const remainder = getModulo(sum);
-  console.log('remainder: ' + remainder)
-
   return isValid(remainder);
 };
 
+// Takes a batch of card numbers, iterates through 
+// & determines valid || invalid.
 const findInvalidCards = (arrayBatch) => {
   let validCards = [];
   let invalidCards = [];
@@ -108,6 +105,8 @@ const findInvalidCards = (arrayBatch) => {
   return invalidCards;
 };
 
+// Takes the invalidCards array and iterates to determine 
+// which companies issued invalid cards.
 const idInvalidCardCompanies = (findInvalidCards) => {
   let companyNames = [];
   let firstNum = [];
@@ -149,38 +148,47 @@ const idInvalidCardCompanies = (findInvalidCards) => {
 
 // console.log("card companies: " + idInvalidCardCompanies(findInvalidCards));
 
-// submit form
+// submit form func. targets form fields to capture data. 
+// Triggers singleCardInputValidator() and returns result (alert). 
+let userFullName;
+let userBankName;
 let userInputCardNum;
 
 const submitForm = (event) => {
   event.preventDefault();
+  const fullName = document.getElementById("fullName")
+  const bankName = document.getElementById("bankName")
   const cardNum = document.getElementById("cardNum");
+
+  userFullName = fullName.value
+  userBankName= bankName.value
   userInputCardNum = cardNum.value
 
-  return singleCardInputValidator(userInputCardNum);
+  return (
+  singleCardInputValidator(userInputCardNum),
+  userFullName, userBankName
+  )
 };
 
 
 // **WIP**
 
-
+// Takes user input in the check single card form. Iterates each digit.
+// Calls validateCred function to rtn true || false 
+// Fnc rtns an alert.
 const singleCardInputValidator = (userInputCardNum) => {
   let singleInputArray = [];
   
-  for (i of userInputCardNum) {
+  for (const i of userInputCardNum) {
     singleInputArray.push(i);
   }
-  
-  console.log('updated singleInputArray: ' + singleInputArray);
-
 
   const checkUserCard = validateCred(singleInputArray);
-  console.log('checkUserCard in func: ' + checkUserCard);
-  
+
   if (checkUserCard) {
-    return alert("your card number is valid");
+    return alert(`${userFullName}, your card number is valid. Your bank is: ${userBankName}`);
   } else {
-    return alert("your card number is invalid");
+    return alert(`${userFullName}, your card number is invalid. Please contact ${userBankName}, your card issuer.`);
   }
 };
 

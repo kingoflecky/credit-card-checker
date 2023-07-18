@@ -10,6 +10,23 @@
 
   <h2>Credit Card Validator</h2>
 
+  <div class="radio-question-wrapper">
+    <form class="radioForm" onsubmit="submitForm(event)">
+      <p>What would you like to validate?</p>
+      
+      <div class="radioBtnAndLbl">
+        <input id='snglCardRadio' type="radio" name="firstQstnRadio"></input>
+        <label for="snglCardRadio">Validate Single Card Number</label>
+        <br />
+      </div>
+
+      <div class="radioBtnAndLbl">
+        <input id='batchCardsRadio' type="radio" name="firstQstnRadio"></input>
+        <label for="snglCardRadio">Validate Batch of Card Numbers</label>
+      </div>
+    </form>
+  </div>
+
   <div class="content-wrapper">
     <form class="inputForm" onsubmit="submitForm(event)">
 
