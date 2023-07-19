@@ -19,6 +19,10 @@
   align-items: center;
 }
 
+.radio-result-btn{
+  margin-bottom: 25px;
+}
+
 .inputForm {
   display: inline-flex;
   flex-direction: column;
